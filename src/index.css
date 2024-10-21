@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0px;
+  margin: 0px;
+  /* background: #000; */
+  box-sizing: border-box;
+}
+.side img {
+  width: 40px;
+}
+/* index.css */
+
+/* Light mode (default) */
+html.light {
+  background-color: #ffffff; /* Light background */
+  color: #000000; /* Light text color */
+}
+
+/* Dark mode */
+html.dark {
+  background: #0f0f0f; /* Dark background (Tailwind's 'gray-900') */
+  color: #f7fafc; /* Light text color for dark mode */
+}
+
+/* Additional global styles for dark mode */
+html.dark .some-class {
+  background-color: #2d3748; /* Darker background for specific elements */
+  color: #e2e8f0; /* Light text color */
+}
