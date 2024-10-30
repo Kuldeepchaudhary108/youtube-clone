@@ -22,28 +22,21 @@ export default function Content({ catagory, setCategory }) {
   ];
   const [data, setData] = useState([]);
   const fetchData = async () => {
-    // Check if data is already in localStorage
-    const cachedData = localStorage.getItem("videoListData");
+    const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${catagory}&key=${API_KEY}`;
+    try {
+      console.log("yahan tk working1 ");
+      const res = await fetch(videoList_url);
+      console.log("yahan tk working2 ");
 
-    if (cachedData) {
-      // If data exists, use it instead of fetching again
-      const parsedData = JSON.parse(cachedData);
-      setData(parsedData.items); // Update the state with cached data
-      console.log("Data loaded from localStorage:", parsedData);
-    } else {
-      // If no data is found in localStorage, fetch from API
-      const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=60&regionCode=IN&videoCategoryId=${catagory}&key=${API_KEY}`;
-      try {
-        const res = await fetch(videoList_url);
-        const data = await res.json();
-        setData(data.items);
-        console.log("Data fetched from API:", data);
+      const data1 = await res.json();
+      console.log("yahan tk working3 ");
+      // setData(data1.items);
+      setData(data1.items);
+      console.log("yahan tk working4 ");
 
-        // Store the fetched data in localStorage
-        localStorage.setItem("videoListData", JSON.stringify(data));
-      } catch (error) {
-        console.error("Error in video list:", error);
-      }
+      console.log(data);
+    } catch (error) {
+      console.error("Error in video list:", error);
     }
   };
 

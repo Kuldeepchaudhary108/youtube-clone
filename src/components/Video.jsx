@@ -34,7 +34,7 @@ export default function Video() {
     try {
       const res = await fetch(channelDetails_url);
       const data = await res.json();
-      setChannelDetails(data.items[0] || {});
+      setChannelDetails(data.items[0]);
     } catch (error) {
       console.error("Error fetching Channel:", error);
     }
