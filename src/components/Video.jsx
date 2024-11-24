@@ -192,7 +192,10 @@ export default function Video() {
         </div>
         <div>
           {related?.map((relatedVideo) => (
-            <Link key={relatedVideo.id} to={`/watch/${relatedVideo.id}`}>
+            <Link
+              key={relatedVideo.id}
+              to={`/video/${relatedVideo.snippet.categoryId}/${relatedVideo.id}`}
+            >
               <div className="flex gap-3">
                 <img
                   className="h-24 rounded-lg mt-2"

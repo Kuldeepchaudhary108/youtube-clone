@@ -9,20 +9,30 @@ export default function Header() {
   const handleSlide = () => {
     dispatch(toggleMenuBar());
   };
+
+  const them = document.querySelector("html").classList;
+
   return (
     <>
-      <nav className="flex justify-between ">
-        <div className=" flex items-center gap-3 ">
-          <FaBars className="h-20 ml-3" onClick={() => handleSlide()} />
+      <nav className="flex justify-between  items-center">
+        <div className=" flex items-center gap-1 ">
+          <FaBars
+            className=" ml-3 cursor-pointer"
+            onClick={() => handleSlide()}
+          />
           <Link to={"/"}>
             <img
-              className="  h-20 text-black "
-              src="/elements/logo with wtext.svg"
+              className="w-28 dark:h-20"
+              src={
+                them.contains("light")
+                  ? "/elements/logo with wtext.svg"
+                  : "https://logodownload.org/wp-content/uploads/2014/10/youtube-logo-0.png"
+              }
               alt="logo"
             />
           </Link>
         </div>
-        <div className="flex shadow rounded-2xl overflow-hidden mt-3   w-[550px]  h-10 ">
+        <div className="flex shadow rounded-2xl overflow-hidden    w-[550px]  h-10 ">
           <input
             className="outline-none w-full py-1 px-3 hover:bg-gray-100 "
             type="text"

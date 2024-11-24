@@ -13,7 +13,7 @@ export default function SideBar({ menuBar, catagory, setCategory }) {
 
   const FeatureItem = [
     { name: "library", img: "./elements/library.png" },
-    { name: "history", img: "./elements/history.png" },
+    { name: "history", img: "./elements/history.png" }, 
     { name: "Like video", img: "./elements/like.png" },
     { name: "Save video", img: "./elements/save.png" },
   ];
