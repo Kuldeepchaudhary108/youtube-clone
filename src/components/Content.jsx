@@ -22,17 +22,18 @@ export default function Content({ catagory, setCategory }) {
   ];
   const [data, setData] = useState([]);
   const fetchData = async () => {
+    console.log(import.meta.env.VITE_API_KEY);
+
+    console.log("api key ", API_KEY);
+
     const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${catagory}&key=${API_KEY}`;
     try {
-      console.log("yahan tk working1 ");
       const res = await fetch(videoList_url);
-      console.log("yahan tk working2 ");
 
       const data1 = await res.json();
-      console.log("yahan tk working3 ");
+
       // setData(data1.items);
       setData(data1.items);
-      console.log("yahan tk working4 ");
 
       console.log(data);
     } catch (error) {
@@ -61,7 +62,7 @@ export default function Content({ catagory, setCategory }) {
           </button>
         ))}
       </div>
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-5 ml-14 ">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-5 ml-14 ">
         {data?.map((video, index) => (
           <Link to={`video/${video.snippet.categoryId}/${video.id}`}>
             <div
